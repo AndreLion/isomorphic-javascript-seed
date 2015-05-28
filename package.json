@@ -1,12 +1,22 @@
 {
-  "name": "Your-Seed-Name",
-  "version": "0.0.0",
-  "description": "Your seed description",
+  "name": "React_React-Engine_Mongoose",
+  "version": "0.1.0",
+  "description": "Based on React, React-Engine and Mongoose",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "browserify": "^10.2.1",
+    "express": "^4.12.4",
+    "node-jsx": "^0.13.3",
+    "react": "^0.13.3",
+    "react-engine": "^1.6.0",
+    "react-router": "^0.13.3",
+    "reactify": "^1.1.1",
+    "require-globify": "^1.2.1"
+  }
 }
