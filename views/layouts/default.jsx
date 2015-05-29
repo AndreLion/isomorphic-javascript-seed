@@ -11,6 +11,12 @@ module.exports = React.createClass({
                 </head>
                 <body>
                     {this.props.children}
+                    <script src="/lib/js/react.min.js"></script>
+                    <script src="/lib/js/jquery.min.js"></script>
+                    <script src="/js/jquery-form.js"></script>
+                    {this.props.js && this.props.js.map(function(src, i){
+                        return <script key={i} src={src}></script>
+                    })}
                 </body>
             </html>
         );

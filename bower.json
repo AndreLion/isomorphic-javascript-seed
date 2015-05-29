@@ -1,0 +1,23 @@
+{
+  "name": "isomorphic-javascript-seed",
+  "version": "0.0.0",
+  "homepage": "https://github.com/AndreLion/isomorphic-javascript-seed",
+  "authors": [
+    "Andre <andre.github@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.3",
+    "jquery": "~2.1.4"
+  }
+}
