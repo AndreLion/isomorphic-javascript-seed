@@ -17,6 +17,7 @@ router.post('/', function(req, res) {
     var data = req.body;
     Users.findOne({ email:data.email,password:data.password }, function (err, user) {
         if(user){
+            req.session.user.email = user.email;
             res.send({
                 success:true,
                 message:'Redirecting ...'

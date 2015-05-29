@@ -22765,7 +22765,7 @@ module.exports = React.createClass({displayName: "exports",
     render: function() {
         return (
             React.createElement(DefaultLayout, {title: this.props.title}, 
-                React.createElement("div", null, "Hello Guest!"), 
+                React.createElement("div", null, "Hello ", this.props.email?this.props.email:'Anymous', " !"), 
                 React.createElement("a", {href: "/login"}, "Login / Register")
             )
         );

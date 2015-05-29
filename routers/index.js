@@ -8,7 +8,8 @@ var router = express.Router();
 
 // define the home page route
 router.get('/', function(req, res) {
-    res.render('index',{title:'Welcome to home page'});
+    var email = req.session.user && req.session.user.email;
+    res.render('index',{title:'Welcome to home page',email:email});
 });
 
 module.exports = router;

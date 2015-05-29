@@ -29,6 +29,7 @@ router.post('/', function(req, res) {
                     password:data.password
                 });
                 newUser.save(function(err,user){
+                    req.session.user.email = user.email;
                     res.send({
                         success:true
                     });
