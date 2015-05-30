@@ -9,8 +9,11 @@ var Users = require('../models/users');
 
 // define the home page route
 router.get('/', function(req, res) {
-    //res.send('login Birds home page');
-    res.render('login',{title:'login page',js:['/js/login.js']});
+    if(req.session.user && req.session.user.email){
+        res.redirect(301, '/');
+    }else{
+        res.render('login',{title:'login page',js:['/js/login.js']});
+    }
 });
 // define the about route
 router.post('/', function(req, res) {

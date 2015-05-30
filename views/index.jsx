@@ -5,8 +5,11 @@ module.exports = React.createClass({
     render: function() {
         return (
             <DefaultLayout title={this.props.title}>
-                <div>Hello {this.props.email?this.props.email:'Anymous'} !</div>
-                <a href="/login">Login / Register</a>
+                <p className="lead">Welcome {this.props.email?this.props.email:'Anonymous user'} !</p>
+                {this.props.email
+                    ? <p>You have logged in, now you can <a href="/logout">logout</a></p>
+                    : <p>Please <a href="/login">Login</a> or <a href="/register">Register</a></p>
+                }
             </DefaultLayout>
         );
     }

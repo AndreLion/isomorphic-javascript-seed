@@ -6,7 +6,6 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-var parseurl = require('parseurl');
 var app = express();
 var engine = re.server.create();
 
@@ -30,13 +29,12 @@ mongoose.connect('mongodb://localhost/isomorphic', function() {
         if(!req.session.user) {
             req.session.user = {};
         }
-        //var pathname = parseurl(req).pathname;
-        //views[pathname] = (views[pathname] || 0) + 1;
         next();
     })
     app.use('/', require('./routers/index'));
     app.use('/login', require('./routers/login'));
     app.use('/register', require('./routers/register'));
+    app.use('/logout', require('./routers/logout'));
 
 
     app.listen(3000);

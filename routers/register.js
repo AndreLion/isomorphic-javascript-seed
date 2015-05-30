@@ -5,7 +5,11 @@ var Users = require('../models/users');
 
 // define the home page route
 router.get('/', function(req, res) {
-    res.render('register',{title:'register page',js:['/js/register.js']});
+    if(req.session.user && req.session.user.email){
+        res.redirect(301, '/');
+    }else{
+        res.render('register', {title: 'register page', js: ['/js/register.js']});
+    }
 });
 // define the about route
 router.post('/', function(req, res) {

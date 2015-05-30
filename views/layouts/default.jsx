@@ -8,9 +8,13 @@ module.exports = React.createClass({
                     <meta charSet="utf-8" />
                     <title>{this.props.title}</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    <link rel="stylesheet" href="/lib/css/bootstrap.min.css" />
+                    <link rel="stylesheet" href="/css/base.css" />
                 </head>
                 <body>
-                    {this.props.children}
+                    <div className="wrap">
+                        {this.props.children}
+                    </div>
                     <script src="/lib/js/react.min.js"></script>
                     <script src="/lib/js/jquery.min.js"></script>
                     <script src="/js/jquery-form.js"></script>

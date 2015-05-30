@@ -15,13 +15,33 @@ module.exports = React.createClass({
     render: function() {
         return (
             <DefaultLayout title={this.props.title} js={this.props.js}>
-                <form action="" method="post" onSubmit={this.onSubmit}>
-                    <input type="email" name="email" placeholder="Your Email?" value={this.state.email} required="true" onChange={this.onChange} />
-                    <input type="password" name="password" placeholder="Your password?" required="true" />
-                    <input type="submit" disabled={this.state.disabled} value="Login" />
-                    Don't have an account? Please <a href="/register">Register</a>
-                    <div className="message-field">
-                        { this.state.message }
+                <form action="" method="post" onSubmit={this.onSubmit} className="form-horizontal">
+                    <div className="form-group">
+                        <label className="col-sm-2 control-label">Email</label>
+                        <div className="col-sm-10">
+                            <input type="email" className="form-control"  placeholder="Email" name="email" value={this.state.email} required="true" onChange={this.onChange} />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="col-sm-2 control-label">Password</label>
+                        <div className="col-sm-10">
+                            <input type="password" name="password" placeholder="Your password?" required="true" className="form-control" placeholder="Password" />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="col-sm-offset-2 col-sm-10">
+                            <p className="text-danger">
+                                { this.state.message }
+                            </p>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="col-sm-offset-2 col-sm-10">
+                            <button type="submit" disabled={this.state.disabled}  className="btn btn-default">Login</button>
+                            <span className="option-link">
+                                Have no account? Please <a href="/register">Register</a>, or back to <a href="/">home</a>
+                            </span>
+                        </div>
                     </div>
                 </form>
             </DefaultLayout>

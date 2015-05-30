@@ -22765,8 +22765,11 @@ module.exports = React.createClass({displayName: "exports",
     render: function() {
         return (
             React.createElement(DefaultLayout, {title: this.props.title}, 
-                React.createElement("div", null, "Hello ", this.props.email?this.props.email:'Anymous', " !"), 
-                React.createElement("a", {href: "/login"}, "Login / Register")
+                React.createElement("p", {className: "lead"}, "Welcome ", this.props.email?this.props.email:'Anonymous user', " !"), 
+                this.props.email
+                    ? React.createElement("p", null, "You have logged in, now you can ", React.createElement("a", {href: "/logout"}, "logout"))
+                    : React.createElement("p", null, "Please ", React.createElement("a", {href: "/login"}, "Login"), " or ", React.createElement("a", {href: "/register"}, "Register"))
+                
             )
         );
     }
@@ -22782,10 +22785,14 @@ module.exports = React.createClass({displayName: "exports",
                 React.createElement("head", null, 
                     React.createElement("meta", {charSet: "utf-8"}), 
                     React.createElement("title", null, this.props.title), 
-                    React.createElement("meta", {name: "viewport", content: "width=device-width, initial-scale=1.0"})
+                    React.createElement("meta", {name: "viewport", content: "width=device-width, initial-scale=1.0"}), 
+                    React.createElement("link", {rel: "stylesheet", href: "/lib/css/bootstrap.min.css"}), 
+                    React.createElement("link", {rel: "stylesheet", href: "/css/base.css"})
                 ), 
                 React.createElement("body", null, 
-                    this.props.children, 
+                    React.createElement("div", {className: "wrap"}, 
+                        this.props.children
+                    ), 
                     React.createElement("script", {src: "/lib/js/react.min.js"}), 
                     React.createElement("script", {src: "/lib/js/jquery.min.js"}), 
                     React.createElement("script", {src: "/js/jquery-form.js"}), 
@@ -22816,13 +22823,33 @@ module.exports = React.createClass({displayName: "exports",
     render: function() {
         return (
             React.createElement(DefaultLayout, {title: this.props.title, js: this.props.js}, 
-                React.createElement("form", {action: "", method: "post", onSubmit: this.onSubmit}, 
-                    React.createElement("input", {type: "email", name: "email", placeholder: "Your Email?", value: this.state.email, required: "true", onChange: this.onChange}), 
-                    React.createElement("input", {type: "password", name: "password", placeholder: "Your password?", required: "true"}), 
-                    React.createElement("input", {type: "submit", disabled: this.state.disabled, value: "Login"}), 
-                    "Don't have an account? Please ", React.createElement("a", {href: "/register"}, "Register"), 
-                    React.createElement("div", {className: "message-field"}, 
-                         this.state.message
+                React.createElement("form", {action: "", method: "post", onSubmit: this.onSubmit, className: "form-horizontal"}, 
+                    React.createElement("div", {className: "form-group"}, 
+                        React.createElement("label", {className: "col-sm-2 control-label"}, "Email"), 
+                        React.createElement("div", {className: "col-sm-10"}, 
+                            React.createElement("input", {type: "email", className: "form-control", placeholder: "Email", name: "email", value: this.state.email, required: "true", onChange: this.onChange})
+                        )
+                    ), 
+                    React.createElement("div", {className: "form-group"}, 
+                        React.createElement("label", {className: "col-sm-2 control-label"}, "Password"), 
+                        React.createElement("div", {className: "col-sm-10"}, 
+                            React.createElement("input", {type: "password", name: "password", placeholder: "Your password?", required: "true", className: "form-control", placeholder: "Password"})
+                        )
+                    ), 
+                    React.createElement("div", {className: "form-group"}, 
+                        React.createElement("div", {className: "col-sm-offset-2 col-sm-10"}, 
+                            React.createElement("p", {className: "text-danger"}, 
+                                 this.state.message
+                            )
+                        )
+                    ), 
+                    React.createElement("div", {className: "form-group"}, 
+                        React.createElement("div", {className: "col-sm-offset-2 col-sm-10"}, 
+                            React.createElement("button", {type: "submit", disabled: this.state.disabled, className: "btn btn-default"}, "Login"), 
+                            React.createElement("span", {className: "option-link"}, 
+                                "Have no account? Please ", React.createElement("a", {href: "/register"}, "Register"), ", or back to ", React.createElement("a", {href: "/"}, "home")
+                            )
+                        )
                     )
                 )
             )
@@ -22863,14 +22890,40 @@ module.exports = React.createClass({displayName: "exports",
     render: function() {
         return (
             React.createElement(DefaultLayout, {title: this.props.title, js: this.props.js}, 
-                React.createElement("form", {action: "", method: "post", onSubmit: this.onSubmit}, 
-                    React.createElement("input", {type: "email", name: "email", placeholder: "Your Email?", required: "true"}), 
-                    React.createElement("input", {type: "password", name: "password", placeholder: "Your password", required: "true"}), 
-                    React.createElement("input", {type: "password", name: "confirm", placeholder: "Your password again", required: "true"}), 
-                    React.createElement("input", {type: "submit", disabled: this.state.disabled, value: "Register"}), 
-                    "Already have an account? Please ", React.createElement("a", {href: "/login"}, "Login"), 
-                    React.createElement("div", {className: "message-field"}, 
-                         this.state.message
+                React.createElement("form", {action: "", method: "post", onSubmit: this.onSubmit, className: "form-horizontal"}, 
+                    React.createElement("div", {className: "form-group"}, 
+                        React.createElement("label", {className: "col-sm-2 control-label"}, "Email"), 
+                        React.createElement("div", {className: "col-sm-10"}, 
+                            React.createElement("input", {type: "email", className: "form-control", name: "email", placeholder: "Your email", required: "true"})
+                        )
+                    ), 
+                    React.createElement("div", {className: "form-group"}, 
+                        React.createElement("label", {className: "col-sm-2 control-label"}, "Password"), 
+                        React.createElement("div", {className: "col-sm-10"}, 
+                            React.createElement("input", {type: "password", name: "password", placeholder: "Your password", required: "true", className: "form-control"})
+                        )
+                    ), 
+
+                    React.createElement("div", {className: "form-group"}, 
+                        React.createElement("label", {className: "col-sm-2 control-label"}, "Confirm"), 
+                        React.createElement("div", {className: "col-sm-10"}, 
+                            React.createElement("input", {type: "password", name: "confirm", placeholder: "Password again", required: "true", className: "form-control"})
+                        )
+                    ), 
+                    React.createElement("div", {className: "form-group"}, 
+                        React.createElement("div", {className: "col-sm-offset-2 col-sm-10"}, 
+                            React.createElement("p", {className: "text-danger"}, 
+                                 this.state.message
+                            )
+                        )
+                    ), 
+                    React.createElement("div", {className: "form-group"}, 
+                        React.createElement("div", {className: "col-sm-offset-2 col-sm-10"}, 
+                            React.createElement("button", {type: "submit", disabled: this.state.disabled, className: "btn btn-default"}, "Register"), 
+                            React.createElement("span", {className: "option-link"}, 
+                                "have an account? Please ", React.createElement("a", {href: "/login"}, "Login"), ", or back to ", React.createElement("a", {href: "/"}, "home")
+                            )
+                        )
                     )
                 )
             )
